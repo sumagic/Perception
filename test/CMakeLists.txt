@@ -6,6 +6,7 @@ link_directories(${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/googletest-dev/lib)
 
 add_executable(perception_ut
     ${CMAKE_SOURCE_DIR}/test/unittest_main.cc
+    ${CMAKE_SOURCE_DIR}/test/utils/log_unittest.cc
 )
 
 target_link_libraries(perception_ut PRIVATE

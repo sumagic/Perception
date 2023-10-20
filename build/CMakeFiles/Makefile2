@@ -92,12 +92,12 @@ test/clean: test/CMakeFiles/perception_ut.dir/clean
 test/CMakeFiles/perception_ut.dir/all:
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/depend
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2 "Built target perception_ut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2,3 "Built target perception_ut"
 .PHONY : test/CMakeFiles/perception_ut.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/perception_ut.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/perception_ut.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/perception_ut.dir/rule

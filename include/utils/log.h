@@ -4,15 +4,13 @@
 namespace perception
 {
 #ifndef _NDEBUG
-    #define LOG(LEVEL, FORMAT, ...) printf("[%s][%s][%s][%d]"FORMAT, ##LEVEL, __FILE__,__FUNCTION__,__LINE__,##__VA_ARGS__)
+    #define LOG_ERROR(FORMAT, ...) printf("[ERROR][%s]:[%s]:[%d]" FORMAT "\n", __FILE__,__FUNCTION__,__LINE__,##__VA_ARGS__)
+    #define LOG_WARN(FORMAT, ...) printf("[WARN][%s]:[%s]:[%d]" FORMAT "\n", __FILE__,__FUNCTION__,__LINE__,##__VA_ARGS__)
+    #define LOG_INFO(FORMAT, ...) printf("[INFO][%s]:[%s]:[%d]" FORMAT "\n", __FILE__,__FUNCTION__,__LINE__,##__VA_ARGS__)
+    #define LOG_DEBUG(FORMAT, ...) printf("[DEBUG][%s]:[%s]:[%d]" FORMAT "\n", __FILE__,__FUNCTION__,__LINE__,##__VA_ARGS__)
 #else
-    #define LOG(fmt, ...) NULL
+    #define LOG(LEVEL, FORMAT, ...) NULL
 #endif 
-
-#define LOG_ERROR(FORMAT, ...) LOG(ERROR, FORMAT, ##__VA_ARGS__)
-#define LOG_WARN(FORMAT, ...) LOG(WARN, FORMAT, ##__VA_ARGS__)
-#define LOG_INFO(FORMAT, ...) LOG(INFO, FORMAT, ##__VA_ARGS__)
-#define LOG_DEBUG(FORMAT, ...) LOG(DEBUG, FORMAT, ##__VA_ARGS__)
 
 } // namespace perception
 
