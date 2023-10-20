@@ -17,6 +17,7 @@ if (${COMPILE_PLATFORM} STREQUAL "aarch64")
 endif()
 
 set(CMAKE_CXX_STANDARD 14)
+add_definitions(-g)
 
 message(STATUS "################project ${project_name} start#####################")
 include_directories(${CMAKE_SOURCE_DIR}/include)
