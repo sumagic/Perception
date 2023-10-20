@@ -110,6 +110,19 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named perception_ut
+
+# Build rule for target.
+perception_ut: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 perception_ut
+.PHONY : perception_ut
+
+# fast build rule for target.
+perception_ut/fast:
+	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/build
+.PHONY : perception_ut/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -118,6 +131,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... perception_ut"
 .PHONY : help
 
 

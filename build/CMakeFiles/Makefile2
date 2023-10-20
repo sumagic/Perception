@@ -53,19 +53,64 @@ CMAKE_BINARY_DIR = /home/geely/kx/E245/perception/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: test/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: test/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean:
+clean: test/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory test
+
+# Recursive "all" directory target.
+test/all: test/CMakeFiles/perception_ut.dir/all
+
+.PHONY : test/all
+
+# Recursive "preinstall" directory target.
+test/preinstall:
+
+.PHONY : test/preinstall
+
+# Recursive "clean" directory target.
+test/clean: test/CMakeFiles/perception_ut.dir/clean
+
+.PHONY : test/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/perception_ut.dir
+
+# All Build rule for target.
+test/CMakeFiles/perception_ut.dir/all:
+	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/depend
+	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2 "Built target perception_ut"
+.PHONY : test/CMakeFiles/perception_ut.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/perception_ut.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/perception_ut.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/perception_ut.dir/rule
+
+# Convenience name for target.
+perception_ut: test/CMakeFiles/perception_ut.dir/rule
+
+.PHONY : perception_ut
+
+# clean rule for target.
+test/CMakeFiles/perception_ut.dir/clean:
+	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/clean
+.PHONY : test/CMakeFiles/perception_ut.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
