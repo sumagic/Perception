@@ -86,7 +86,7 @@ set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
 ```bash
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=install
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp-dev
 make -j
 make install
 ```
