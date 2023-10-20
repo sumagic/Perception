@@ -6,7 +6,14 @@
 #### Software Architecture
 Software architecture description
 
+#### 依赖库编译
+1.  googletest编译
+```bash
+cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest
+```
+
 #### 依赖库交叉编译
+
 * 导出环境变量
 ```bash
 export PATH=/home/***-sdk/tools/gcc-linaro-7.5.0/bin
