@@ -9,7 +9,13 @@ Software architecture description
 #### 依赖库编译
 1.  googletest编译
 ```bash
-cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest
+cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest-dev
+```
+
+2. yaml-cpp编译
+```
+cmake .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp
+
 ```
 
 #### 依赖库交叉编译
