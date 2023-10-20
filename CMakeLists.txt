@@ -8,8 +8,9 @@ project(${project_name})
 # set(COMPILE_PLATFORM "aarch64")
 set(COMPILE_PLATFORM "x86")
 
+set(CMAKE_SYSTEM_NAME Linux)
+
 if (${COMPILE_PLATFORM} STREQUAL "aarch64")
-    set(CMAKE_SYSTEM_NAME Linux)
     set(CMAKE_SYSTEM_PROCESSOR arm)
     set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
     set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
