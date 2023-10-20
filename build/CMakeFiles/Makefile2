@@ -134,7 +134,7 @@ tools/clean: tools/CMakeFiles/perception_offline.dir/clean
 test/CMakeFiles/perception_ut.dir/all:
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/depend
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=5,6,7 "Built target perception_ut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=6,7,8 "Built target perception_ut"
 .PHONY : test/CMakeFiles/perception_ut.dir/all
 
 # Build rule for subdir invocation for target.
@@ -161,12 +161,12 @@ test/CMakeFiles/perception_ut.dir/clean:
 tools/CMakeFiles/perception_offline.dir/all: src/CMakeFiles/PerceptionCore.dir/all
 	$(MAKE) -f tools/CMakeFiles/perception_offline.dir/build.make tools/CMakeFiles/perception_offline.dir/depend
 	$(MAKE) -f tools/CMakeFiles/perception_offline.dir/build.make tools/CMakeFiles/perception_offline.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=3,4 "Built target perception_offline"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=4,5 "Built target perception_offline"
 .PHONY : tools/CMakeFiles/perception_offline.dir/all
 
 # Build rule for subdir invocation for target.
 tools/CMakeFiles/perception_offline.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 tools/CMakeFiles/perception_offline.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 0
 .PHONY : tools/CMakeFiles/perception_offline.dir/rule
@@ -188,12 +188,12 @@ tools/CMakeFiles/perception_offline.dir/clean:
 src/CMakeFiles/PerceptionCore.dir/all:
 	$(MAKE) -f src/CMakeFiles/PerceptionCore.dir/build.make src/CMakeFiles/PerceptionCore.dir/depend
 	$(MAKE) -f src/CMakeFiles/PerceptionCore.dir/build.make src/CMakeFiles/PerceptionCore.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2 "Built target PerceptionCore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2,3 "Built target PerceptionCore"
 .PHONY : src/CMakeFiles/PerceptionCore.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/PerceptionCore.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/PerceptionCore.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/PerceptionCore.dir/rule

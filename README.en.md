@@ -7,6 +7,12 @@
 Software architecture description
 
 #### 依赖库编译
+* ubuntu20.04
+* cmake 3.16.3
+* gcc 9.3.0
+* aarch64-linux-gnu-gcc 7.5.0
+
+
 1.  googletest编译
 ```bash
 cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest-dev
@@ -15,6 +21,13 @@ cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest-dev
 2. yaml-cpp编译
 ```
 cmake .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp
+
+```
+
+3、opencv-x86编译
+```
+cmake -DCMAKE_INSTALL_PREFIX=opencv-dev -DWITH_OPENCL=ON -DENABLE_PRECOMPILED_HEADERS=OFF  -DBUILD_SHARED_LIBS=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ ..
+
 
 ```
 
@@ -43,7 +56,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/arm.toolchain.cmake")
 cd ${opencv_root}
 git clone https://gitee.com/mirrors/opencv_contrib.git
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=install -DWITH_OPENCL=ON -DENABLE_PRECOMPILED_HEADERS=OFF -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/aarch64-gnu.toolchain.cmake  -DBUILD_SHARED_LIBS=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ ..
+cmake -DCMAKE_INSTALL_PREFIX=opencv-dev -DWITH_OPENCL=ON -DENABLE_PRECOMPILED_HEADERS=OFF -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/aarch64-gnu.toolchain.cmake  -DBUILD_SHARED_LIBS=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ ..
 make -j
 make install
 ```

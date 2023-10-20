@@ -9,6 +9,7 @@ link_directories(${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/yaml-cpp/lib)
 
 add_library(PerceptionCore
     operator/sub_mean_scale.cc
+    utils/file.cc
 )
 
 target_link_libraries(PerceptionCore PRIVATE
