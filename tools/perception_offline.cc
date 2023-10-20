@@ -8,13 +8,14 @@
 #include <vector>
 #include <fstream>
 
+
 int main(int argc, char **argv)
 {
     LOG_INFO("start to process image: ");
 
     YAML::Node config = YAML::LoadFile("config/perception_offline.yaml");
     std::string image_source_dir = config["image_source_dir"].as<std::string>();
-    if (!IsFileExist(image_source_dir)) {
+    if (!perception::IsFileExist(image_source_dir)) {
         LOG_ERROR("image source dir: %s is not exist", image_source_dir.c_str());
         return -1;
     }
