@@ -1,9 +1,8 @@
 #ifndef __PERCEPTION_COMMON_H__
 #define __PERCEPTION_COMMON_H__
 
-#include "yaml-cpp/yaml.h"
-
 #include <cstddef>
+#include <stdio.h>
 
 #ifndef _NDEBUG
     #define LOG_ERROR(FORMAT, ...) printf("[ERROR][%s]:[%s]:[%d]" FORMAT "\n", __FILE__,__FUNCTION__,__LINE__,##__VA_ARGS__)
@@ -35,8 +34,6 @@ enum Status {
 
     UNKNOWN
 }; // Status
-
-using Config = YAML::Node;
 
 } // namespace perception
 

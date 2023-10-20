@@ -54,18 +54,42 @@ CMAKE_BINARY_DIR = /home/geely/kx/E245/perception/build
 
 # The main recursive "all" target.
 all: test/all
+all: tools/all
+all: src/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: test/preinstall
+preinstall: tools/preinstall
+preinstall: src/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: test/clean
+clean: tools/clean
+clean: src/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src
+
+# Recursive "all" directory target.
+src/all: src/CMakeFiles/PerceptionCore.dir/all
+
+.PHONY : src/all
+
+# Recursive "preinstall" directory target.
+src/preinstall:
+
+.PHONY : src/preinstall
+
+# Recursive "clean" directory target.
+src/clean: src/CMakeFiles/PerceptionCore.dir/clean
+
+.PHONY : src/clean
 
 #=============================================================================
 # Directory level rules for directory test
@@ -86,13 +110,31 @@ test/clean: test/CMakeFiles/perception_ut.dir/clean
 .PHONY : test/clean
 
 #=============================================================================
+# Directory level rules for directory tools
+
+# Recursive "all" directory target.
+tools/all: tools/CMakeFiles/perception_offline.dir/all
+
+.PHONY : tools/all
+
+# Recursive "preinstall" directory target.
+tools/preinstall:
+
+.PHONY : tools/preinstall
+
+# Recursive "clean" directory target.
+tools/clean: tools/CMakeFiles/perception_offline.dir/clean
+
+.PHONY : tools/clean
+
+#=============================================================================
 # Target rules for target test/CMakeFiles/perception_ut.dir
 
 # All Build rule for target.
 test/CMakeFiles/perception_ut.dir/all:
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/depend
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2,3 "Built target perception_ut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=5,6,7 "Built target perception_ut"
 .PHONY : test/CMakeFiles/perception_ut.dir/all
 
 # Build rule for subdir invocation for target.
@@ -111,6 +153,60 @@ perception_ut: test/CMakeFiles/perception_ut.dir/rule
 test/CMakeFiles/perception_ut.dir/clean:
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/clean
 .PHONY : test/CMakeFiles/perception_ut.dir/clean
+
+#=============================================================================
+# Target rules for target tools/CMakeFiles/perception_offline.dir
+
+# All Build rule for target.
+tools/CMakeFiles/perception_offline.dir/all: src/CMakeFiles/PerceptionCore.dir/all
+	$(MAKE) -f tools/CMakeFiles/perception_offline.dir/build.make tools/CMakeFiles/perception_offline.dir/depend
+	$(MAKE) -f tools/CMakeFiles/perception_offline.dir/build.make tools/CMakeFiles/perception_offline.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=3,4 "Built target perception_offline"
+.PHONY : tools/CMakeFiles/perception_offline.dir/all
+
+# Build rule for subdir invocation for target.
+tools/CMakeFiles/perception_offline.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 tools/CMakeFiles/perception_offline.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 0
+.PHONY : tools/CMakeFiles/perception_offline.dir/rule
+
+# Convenience name for target.
+perception_offline: tools/CMakeFiles/perception_offline.dir/rule
+
+.PHONY : perception_offline
+
+# clean rule for target.
+tools/CMakeFiles/perception_offline.dir/clean:
+	$(MAKE) -f tools/CMakeFiles/perception_offline.dir/build.make tools/CMakeFiles/perception_offline.dir/clean
+.PHONY : tools/CMakeFiles/perception_offline.dir/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/PerceptionCore.dir
+
+# All Build rule for target.
+src/CMakeFiles/PerceptionCore.dir/all:
+	$(MAKE) -f src/CMakeFiles/PerceptionCore.dir/build.make src/CMakeFiles/PerceptionCore.dir/depend
+	$(MAKE) -f src/CMakeFiles/PerceptionCore.dir/build.make src/CMakeFiles/PerceptionCore.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/geely/kx/E245/perception/build/CMakeFiles --progress-num=1,2 "Built target PerceptionCore"
+.PHONY : src/CMakeFiles/PerceptionCore.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/PerceptionCore.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/PerceptionCore.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geely/kx/E245/perception/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/PerceptionCore.dir/rule
+
+# Convenience name for target.
+PerceptionCore: src/CMakeFiles/PerceptionCore.dir/rule
+
+.PHONY : PerceptionCore
+
+# clean rule for target.
+src/CMakeFiles/PerceptionCore.dir/clean:
+	$(MAKE) -f src/CMakeFiles/PerceptionCore.dir/build.make src/CMakeFiles/PerceptionCore.dir/clean
+.PHONY : src/CMakeFiles/PerceptionCore.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

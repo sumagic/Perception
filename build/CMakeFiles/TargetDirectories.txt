@@ -3,3 +3,9 @@
 /home/geely/kx/E245/perception/build/test/CMakeFiles/edit_cache.dir
 /home/geely/kx/E245/perception/build/test/CMakeFiles/rebuild_cache.dir
 /home/geely/kx/E245/perception/build/test/CMakeFiles/perception_ut.dir
+/home/geely/kx/E245/perception/build/tools/CMakeFiles/rebuild_cache.dir
+/home/geely/kx/E245/perception/build/tools/CMakeFiles/edit_cache.dir
+/home/geely/kx/E245/perception/build/tools/CMakeFiles/perception_offline.dir
+/home/geely/kx/E245/perception/build/src/CMakeFiles/rebuild_cache.dir
+/home/geely/kx/E245/perception/build/src/CMakeFiles/edit_cache.dir
+/home/geely/kx/E245/perception/build/src/CMakeFiles/PerceptionCore.dir

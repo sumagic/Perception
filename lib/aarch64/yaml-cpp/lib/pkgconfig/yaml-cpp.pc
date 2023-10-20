@@ -1,11 +1,9 @@
-prefix=/home/geely/kx/E245/yaml-cpp/build/yaml-cpp
-exec_prefix=${prefix}
-includedir=/home/geely/kx/E245/yaml-cpp/build/yaml-cpp/include
-libdir=/home/geely/kx/E245/yaml-cpp/build/yaml-cpp/lib
+libdir=lib
+includedir=include
 
 Name: Yaml-cpp
 Description: A YAML parser and emitter for C++
-Version: 0.8.0
+Version: 0.6.0
 Requires:
 Libs: -L${libdir} -lyaml-cpp
 Cflags: -I${includedir}

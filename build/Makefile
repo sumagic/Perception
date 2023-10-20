@@ -123,6 +123,32 @@ perception_ut/fast:
 	$(MAKE) -f test/CMakeFiles/perception_ut.dir/build.make test/CMakeFiles/perception_ut.dir/build
 .PHONY : perception_ut/fast
 
+#=============================================================================
+# Target rules for targets named perception_offline
+
+# Build rule for target.
+perception_offline: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 perception_offline
+.PHONY : perception_offline
+
+# fast build rule for target.
+perception_offline/fast:
+	$(MAKE) -f tools/CMakeFiles/perception_offline.dir/build.make tools/CMakeFiles/perception_offline.dir/build
+.PHONY : perception_offline/fast
+
+#=============================================================================
+# Target rules for targets named PerceptionCore
+
+# Build rule for target.
+PerceptionCore: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PerceptionCore
+.PHONY : PerceptionCore
+
+# fast build rule for target.
+PerceptionCore/fast:
+	$(MAKE) -f src/CMakeFiles/PerceptionCore.dir/build.make src/CMakeFiles/PerceptionCore.dir/build
+.PHONY : PerceptionCore/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -132,6 +158,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... perception_ut"
+	@echo "... perception_offline"
+	@echo "... PerceptionCore"
 .PHONY : help
 
 

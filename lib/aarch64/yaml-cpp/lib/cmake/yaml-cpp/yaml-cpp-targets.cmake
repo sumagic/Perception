@@ -16,7 +16,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget yaml-cpp::yaml-cpp)
+foreach(_expectedTarget yaml-cpp)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -50,13 +50,8 @@ if(_IMPORT_PREFIX STREQUAL "/")
   set(_IMPORT_PREFIX "")
 endif()
 
-# Create imported target yaml-cpp::yaml-cpp
-add_library(yaml-cpp::yaml-cpp SHARED IMPORTED)
-
-set_target_properties(yaml-cpp::yaml-cpp PROPERTIES
-  INTERFACE_COMPILE_DEFINITIONS "\$<\$<NOT:\$<BOOL:ON>>:YAML_CPP_STATIC_DEFINE>"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-)
+# Create imported target yaml-cpp
+add_library(yaml-cpp STATIC IMPORTED)
 
 # Load information for each installed configuration.
 get_filename_component(_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
