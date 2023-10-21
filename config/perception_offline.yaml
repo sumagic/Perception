@@ -11,6 +11,14 @@ NCNNEngine:
 DECODER: "Yolov5Decoder"
 Yolov5Decoder:
   model_path: "../data/yolov5s.onnx"
-  anchors: [[10, 13, 16, 30, 33, 23], [30, 61
+  anchors: [[10, 13, 16, 30, 33, 23],
+            [30, 61, 62, 45, 59, 119],
+            [116, 90, 156, 198, 373, 326]]
+  num_heads: 3
+  strides: [8, 16, 32]
+  num_classes: 80
+  conf_threshold: 0.005
+  nms_threshold: 0.6
+  max_output_size: 100
 
 VISUALIZER: true

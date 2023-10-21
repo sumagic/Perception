@@ -16,10 +16,13 @@ public:
     Yolov5Decoder() = default;
     ~Yolov5Decoder() = default;
     Status Init(const YAML::Node& config);
-    Status Decode(const std::vector<Tensor<float>>& pred, std::vector<std::vector<PredBox>>& bboxes);
+    Status Decode(const std::vector<Tensor<float>>& pred, 
+        std::vector<std::vector<PredBox>>& bboxes);
 
 private:
     std::vector<float> m_anchors = {};
+    size_t m_numHeads;
+    std::vector<size_t> m_strides;
 };
 } // namespace perception
 
