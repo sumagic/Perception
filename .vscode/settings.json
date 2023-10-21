@@ -72,6 +72,8 @@
         "dense": "cpp",
         "core": "cpp",
         "specialfunctions": "cpp",
-        "netfwd": "cpp"
+        "netfwd": "cpp",
+        "*.ipp": "cpp",
+        "*.inc": "cpp"
     }
 }

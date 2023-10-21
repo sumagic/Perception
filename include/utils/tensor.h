@@ -6,8 +6,9 @@
 namespace perception
 {
 
+// nchw
 template <typename T>
-using Tensor = Eigen::Tensor<float, 4>;
+using Tensor = Eigen::Tensor<float, 4, Eigen::RowMajor>;
 } // namespace perception
 
 #endif // __PERCEPTION_TENSOR_H__
