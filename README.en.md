@@ -1,10 +1,14 @@
 # Perception
 
 #### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+* 本代码仓主要实现感知部署基础框架代码
+* 使用Eigen::Tensor作为基础的数据结构
+* 支持NCNN
 
 #### Software Architecture
-Software architecture description
+* ai_engine: 提供简化、通用、灵活的感知部署框架
+* operator: 实现常用的预处理和后处理算子
+* utils: 实现工具类等
 
 #### 依赖库编译
 * ubuntu20.04
@@ -110,26 +114,3 @@ cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DBUILD_SHA
 make -j
 make install
 ```
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)

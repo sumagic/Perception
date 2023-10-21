@@ -1,39 +1,116 @@
 # Perception
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+#### Description
+* 本代码仓主要实现感知部署基础框架代码
+* 使用Eigen::Tensor作为基础的数据结构
+* 支持NCNN
 
-#### 软件架构
-软件架构说明
+#### Software Architecture
+* ai_engine: 提供简化、通用、灵活的感知部署框架
+* operator: 实现常用的预处理和后处理算子
+* utils: 实现工具类等
 
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  aarch64 gcc version 7.5.0
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+#### 依赖库编译
+* ubuntu20.04
+* cmake 3.16.3
+* gcc 9.3.0
+* aarch64-linux-gnu-gcc 7.5.0
 
 
-#### 特技
+1.  googletest编译
+```bash
+cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest-dev
+```
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+2. yaml-cpp编译
+```
+cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp-dev
+
+```
+
+3、opencv-x86编译
+```
+cmake -DCMAKE_INSTALL_PREFIX=opencv-dev -DWITH_OPENCL=ON -DENABLE_PRECOMPILED_HEADERS=OFF  -DBUILD_SHARED_LIBS=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ ..
+
+```
+
+4、eigen编译
+```bash
+cmake .. -DCMAKE_INSTALL_PREFIX=Eigen
+
+```
+
+#### 依赖库交叉编译
+
+* 导出环境变量
+```bash
+export PATH=/home/***-sdk/tools/gcc-linaro-7.5.0/bin
+```
+
+1. opencv编译过程
+```bash
+https://gitee.com/mirrors_trending/opencv.git
+cd platforms/linux
+# opencvX.X.X/platforms/linux目录下，选择aarch64-gnu.toolchain.cmake 工具链
+# 在进行编译前，需要修改cmake文件，修改platform/linux/aarch64-gnu.toolchain.cmake，改为如下：
+set(CMAKE_SYSTEM_PROCESSOR aarch64)
+set(GCC_COMPILER_VERSION "" CACHE STRING "GCC Compiler version")
+set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+set(GNU_MACHINE "aarch64-linux-gnu" CACHE STRING "GNU compiler triple")
+include("${CMAKE_CURRENT_LIST_DIR}/arm.toolchain.cmake")
+```
+* 编译
+```bash
+cd ${opencv_root}
+git clone https://gitee.com/mirrors/opencv_contrib.git
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=opencv-dev -DWITH_OPENCL=ON -DENABLE_PRECOMPILED_HEADERS=OFF -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/aarch64-gnu.toolchain.cmake  -DBUILD_SHARED_LIBS=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ ..
+make -j
+make install
+```
+
+2.  ncnn编译
+```bash
+git clone https://gitee.com/Tencent/ncnn.git
+cd <ncnn-root-dir>
+mkdir -p build-aarch64-linux-gnu
+cd build-aarch64-linux-gnu
+cmake -DCMAKE_TOOLCHAIN_FILE=../toolchains/aarch64-linux-gnu.toolchain.cmake ..
+make -j$(nproc)
+```
+
+3.  yaml-cpp编译
+```bash
+git clone https://gitee.com/mirrors/yaml-cpp.git
+```
+* 在yaml-cpp目录下创建一个名为arm-linux-gnueabi.toolchain.cmake的文件，内容如下：
+```bash
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+```
+* 编译
+```bash
+mkdir build
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp-dev
+make -j
+make install
+```
+
+4.  googletest编译
+* 在yaml-cpp目录下创建一个名为arm-linux-gnueabi.toolchain.cmake的文件，内容如下
+```bash
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR aarch64)
+set(CMAKE_C_COMPILER aarch64-linux-gnu-gcc)
+set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
+```
+* 编译
+```bash
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=install
+make -j
+make install
+```
