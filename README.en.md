@@ -28,6 +28,11 @@ cmake .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp
 ```
 cmake -DCMAKE_INSTALL_PREFIX=opencv-dev -DWITH_OPENCL=ON -DENABLE_PRECOMPILED_HEADERS=OFF  -DBUILD_SHARED_LIBS=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ ..
 
+```
+
+4、eigen编译
+```bash
+cmake .. -DCMAKE_INSTALL_PREFIX=Eigen
 
 ```
 

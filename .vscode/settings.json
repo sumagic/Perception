@@ -68,6 +68,10 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "dense": "cpp",
+        "core": "cpp",
+        "specialfunctions": "cpp",
+        "netfwd": "cpp"
     }
 }
