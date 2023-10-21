@@ -73,6 +73,12 @@ Status Yolov5Decoder::Decode(const std::vector<Tensor<float>>& preds,
                     float y1 = pb_cy + pb_h * 0.5f;
 
                     PredBox box;
+                    box.box.cx = (x0 + x1) / 2.f;
+                    box.box.cy = (y0 + y1) / 2.f;
+                    box.box.width = (x1 - x0);
+                    box.box.height = (y1 - y0);
+                    box.id = class_index;
+                    box.score = confidence;    
                     bboxes.push_back(box);
                 }
             }
