@@ -24,11 +24,16 @@ public:
     {
         m_net.load_param(config["param"].as<std::string>().c_str());
         m_net.load_model(config["model"].as<std::string>().c_str());
+        m_iName = config["input"].as<std::vector<std::string>>();
+        m_oName = config["output"].as<std::vector<std::string>>();
         m_extractor = m_net.create_extractor();
         return SUCCESS;
     }
     Status Run(const std::vector<Tensor<InputDType>>& ins, std::vector<Tensor<OutputDType>>& outs)
     {
+        assert(ins.size() == m_iName.size());
+        assert(outs.size() == m_oName.size());
+
         for (size_t i = 0; i < ins.size(); i++)
             m_extractor.input(m_iName[i].c_str(), ins[i].data);
 

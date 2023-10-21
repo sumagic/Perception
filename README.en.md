@@ -20,7 +20,7 @@ cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=googletest-dev
 
 2. yaml-cpp编译
 ```
-cmake .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp
+cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp-dev
 
 ```
 
@@ -91,7 +91,7 @@ set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++)
 ```bash
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp-dev
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-linux-gnueabi.toolchain.cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=yaml-cpp-dev
 make -j
 make install
 ```

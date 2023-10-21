@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     }
 
     YAML::Node config = YAML::LoadFile(yaml_file_path);
-    std::string image_source_dir = config["image_source_dir"].as<std::string>();
+    std::string image_source_dir = config["ImageSourceDir"].as<std::string>();
     if (!perception::IsFileExist(image_source_dir)) {
         LOG_ERROR("image source dir: %s is not exist", image_source_dir.c_str());
         return -1;

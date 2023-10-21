@@ -1,1 +1,16 @@
-image_source_dir: ../data/val2017
+ImageSourceDir: ../data/val2017
+PREPROCESS: ""
+
+AI_ENGINE: "NCNNEngine"
+NCNNEngine:
+  model_path: "../data/yolov5s.param"
+  bin_path: "../data/yolov5s.bin"
+  in_name: []
+  out_name: []
+
+DECODER: "Yolov5Decoder"
+Yolov5Decoder:
+  model_path: "../data/yolov5s.onnx"
+  anchors: [[10, 13, 16, 30, 33, 23], [30, 61
+
+VISUALIZER: true
