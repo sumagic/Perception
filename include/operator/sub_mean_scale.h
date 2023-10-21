@@ -5,10 +5,6 @@
 #include "common.h"
 #include "utils/tensor.h"
 
-#ifdef USE_NCNN
-    #include "ncnn/net.h"
-#endif // USE_NCNN
-
 #include <vector>
 
 namespace perception {
@@ -25,9 +21,6 @@ Status Run(std::vector<Tensor<float>>& ins,
 private:
     std::vector<std::vector<float>> m_mean;
     std::vector<std::vector<float>> m_scale;
-#ifdef USE_NCNN
-    ::ncnn::Mat m_mat;
-#endif // USE_NCNN
 }; // class SubMeanScale
 
 } // namespace 

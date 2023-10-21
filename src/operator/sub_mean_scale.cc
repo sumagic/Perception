@@ -1,5 +1,9 @@
 #include "operator/sub_mean_scale.h"
 
+#ifdef USE_NCNN
+    #include "ncnn/net.h"
+#endif // USE_NCNN
+
 namespace perception {
 Status SubMeanScale::Init(const YAML::Node& config)
 {
@@ -16,8 +20,8 @@ Status SubMeanScale::Run(std::vector<Tensor<float>>& ins,
     
     #ifdef USE_NCNN
         auto& dims = outs[i].dimensions(); // DCHW
-        m_mat = ncnn::Mat(dims[3], dims[2], dims[0], dims[1], ins[i].data(), sizeof(float));
-        m_mat.substract_mean_normalize(m_mean[i].data(), m_scale[i].data());
+        ncnn::Mat tmp = ncnn::Mat(dims[3], dims[2], dims[0], dims[1], ins[i].data(), sizeof(float));
+        tmp.substract_mean_normalize(m_mean[i].data(), m_scale[i].data());
     #endif
 
     }

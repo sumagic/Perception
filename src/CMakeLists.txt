@@ -18,6 +18,7 @@ include_directories(
 
 add_library(PerceptionCore SHARED
     operator/sub_mean_scale.cc
+    operator/proportion_resize_border.cc
     operator/yolov5_decoder.cc
     utils/file.cc
     ai_engine/ncnn.cc
