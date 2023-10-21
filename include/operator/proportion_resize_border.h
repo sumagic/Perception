@@ -9,16 +9,22 @@
 
 namespace perception
 {
-
-class ProportionResizeBorder
+/**
+ * NHWC
+*/
+class ImageProportionResizeBorder
 {
 public:
-    ProportionResizeBorder() {}
-    ~ProportionResizeBorder() {}
+    ImageProportionResizeBorder() {}
+    ~ImageProportionResizeBorder() {}
 
     Status Init(const YAML::Node& config);
     Status Run(std::vector<Tensor<float>>& ins,
         std::vector<Tensor<float>>& outs);
+
+private:
+    size_t m_targetWidth;
+    size_t m_targetHeight;
 }; // class ResizeBorder
 
 } // namespace perception
