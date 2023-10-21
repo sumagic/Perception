@@ -25,6 +25,8 @@ private:
     size_t m_numClasses;
     size_t m_numAnchors;
     std::vector<size_t> m_strides;
+    float m_confidence;
+    float m_iouThreshold;
 };
 } // namespace perception
 

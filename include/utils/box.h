@@ -19,6 +19,8 @@ struct PredBox {
     float score;
     size_t id;
     Box box;
+
+    PredBox(): score(0.0f), id(0), box(0, 0, 0, 0) {}
     PredBox(const Box& ibox, const float iscore, const size_t iid): box(ibox), score(iscore), id(iid) {}
 }; // struct PredBox
 

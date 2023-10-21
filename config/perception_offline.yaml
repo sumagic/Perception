@@ -17,8 +17,7 @@ Yolov5Decoder:
   num_heads: 3
   strides: [8, 16, 32]
   num_classes: 80
-  conf_threshold: 0.005
-  nms_threshold: 0.6
-  max_output_size: 100
+  box_confidence: 0.005
+  box_iou_threshold: 0.6
 
 VISUALIZER: true
