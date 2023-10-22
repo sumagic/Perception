@@ -12,15 +12,15 @@ namespace perception
 /**
  * NHWC
 */
-class ImageProportionResizeBorder
+class LetterBox
 {
 public:
-    ImageProportionResizeBorder() {}
-    ~ImageProportionResizeBorder() {}
+    LetterBox() {}
+    ~LetterBox() {}
 
     Status Init(const YAML::Node& config);
-    Status Run(std::vector<Tensor<float>>& ins,
-        std::vector<Tensor<float>>& outs);
+    Status Run(std::vector<Tensor<uint8_t>>& ins,
+        std::vector<Tensor<uint8_t>>& outs);
 
 private:
     size_t m_targetWidth;
