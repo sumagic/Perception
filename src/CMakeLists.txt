@@ -33,6 +33,8 @@ add_library(PerceptionCore SHARED
     ai_engine/ecarx_engine.cc
 )
 
+target_compile_definitions(PerceptionCore PUBLIC USE_NCNN_SIMPLEOCV)
+
 target_link_libraries(PerceptionCore PRIVATE
     yaml-cpp
     ncnn
