@@ -5,10 +5,12 @@ set(project_name "Perception")
 
 project(${project_name})
 
-# set(COMPILE_PLATFORM "aarch64")
-set(COMPILE_PLATFORM "x86")
+set(COMPILE_PLATFORM "aarch64")
+# set(COMPILE_PLATFORM "x86")
 
 set(CMAKE_SYSTEM_NAME Linux)
+
+set(ECARX_ENGINE_PATH "/home/geely/kx/ecarx-ai-sdk/ecarx/ecarxengine")
 
 if (${COMPILE_PLATFORM} STREQUAL "aarch64")
     set(CMAKE_SYSTEM_PROCESSOR arm)
