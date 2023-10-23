@@ -3,7 +3,7 @@
 
 #include "common.h"
 #include "utils/tensor.h"
-
+#include "utils/box.h"
 
 #include "yaml-cpp/yaml.h"
 
@@ -19,12 +19,15 @@ public:
     ~LetterBox() {}
 
     Status Init(const YAML::Node& config);
-    Status Run(std::vector<Tensor<uint8_t>>& ins,
-        std::vector<Tensor<uint8_t>>& outs);
+    Status Run(const Image& in, Image& out);
+    void Restore(std::vector<PredBox>& prebox);
 
 private:
     size_t m_targetWidth;
     size_t m_targetHeight;
+    float m_scale;
+    size_t m_hPad;
+    size_t m_wPad;
 }; // class ResizeBorder
 
 } // namespace perception
