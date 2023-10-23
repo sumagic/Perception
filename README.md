@@ -10,6 +10,12 @@
 * operator: 实现常用的预处理和后处理算子
 * utils: 实现工具类等
 
+### 编译
+* 修改ecarx_engine位置:
+```bash
+set(ECARX_ENGINE_PATH "/home/geely/kx/ecarx-ai-sdk/ecarx/ecarxengine")
+```
+
 #### 依赖库编译
 * ubuntu20.04
 * cmake 3.16.3
