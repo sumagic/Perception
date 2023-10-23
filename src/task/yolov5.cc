@@ -68,6 +68,21 @@ Status Yolov5::Process(const cv::Mat& image, std::vector<PredBox>& object_infos)
         LOG_ERROR("engine run failed, ret=%x", status);
         return status;
     }
+
+    std::vector<PredBox> bboxes = {};
+    status = m_decoder.Decode(outs, bboxes);
+    if (status != SUCCESS) {
+        LOG_ERROR("decode failed, ret=%x", status);
+        return status;
+    }
+
+    object_infos.clear();
+    status = m_predBoxNMS.Run(bboxes, object_infos);
+    if (status != SUCCESS) {
+        LOG_ERROR("pred box nms failed, ret=%x", status);
+        return status;
+    }
+
     return SUCCESS;
 }
 } // namespace perception
