@@ -3,6 +3,9 @@
 #ifdef USE_NCNN
     #include "ncnn/net.h"
 #endif // USE_NCNN
+
+#include <algorithm>
+
 namespace perception
 {
 
@@ -15,6 +18,9 @@ Status LetterBox::Run(const Image& in, Image& out)
 {
     auto& idims = in.dimensions(); // DHWC, input images
     auto& odims = out.dimensions(); // DHWC, output images
+
+    m_srcWidth = idims[1];
+    m_srcHeight = idims[0];
 
     float hscale = (float)odims[0] / idims[0]; // targetH / inputH
     float wscale = (float)odims[1] / idims[1]; // targetW / inputW
@@ -38,7 +44,21 @@ void LetterBox::Restore(std::vector<PredBox>& predboxes)
     float x1, y1, x2, y2;
     for (auto& predbox : predboxes)
     {
-      
+        float x0 = (predbox.box.x - (m_wPad / 2)) / m_scale;
+        float y0 = (predbox.box.y - (m_hPad / 2)) / m_scale;
+        float x1 = (predbox.box.x + predbox.box.width - (m_wPad / 2)) / m_scale;
+        float y1 = (predbox.box.y + predbox.box.height - (m_hPad / 2)) / m_scale;
+
+        x0 = std::max(std::min(x0, (float)(m_srcWidth - 1)), 0.f);
+        y0 = std::max(std::min(y0, (float)(m_srcHeight - 1)), 0.f);
+        x1 = std::max(std::min(x1, (float)(m_srcWidth - 1)), 0.f);
+        y1 = std::max(std::min(y1, (float)(m_srcHeight - 1)), 0.f);
+
+
+        predbox.box.x = x0;
+        predbox.box.y = y0;
+        predbox.box.width = x1 - x0;
+        predbox.box.height = y1 - y0;
     }
 }
 

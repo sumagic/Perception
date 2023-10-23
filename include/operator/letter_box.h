@@ -28,6 +28,8 @@ private:
     float m_scale;
     size_t m_hPad;
     size_t m_wPad;
+    size_t m_srcWidth;
+    size_t m_srcHeight;
 }; // class ResizeBorder
 
 } // namespace perception
