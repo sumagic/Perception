@@ -23,8 +23,8 @@ namespace perception
 class Yolov5
 {
 public:
-    Yolov5();
-    ~Yolov5();
+    Yolov5() {}
+    ~Yolov5() {}
     Status Init(const YAML::Node& yaml_node);
     Status Process(const cv::Mat& image, std::vector<PredBox>& object_infos);
 

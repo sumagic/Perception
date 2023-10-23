@@ -4,6 +4,8 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(
     ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/yaml-cpp-dev/include
     ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/opencv-dev/include/opencv4
+    ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/Eigen/include/eigen3
+    ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/ncnn/include
 )
 link_directories(${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/yaml-cpp-dev/lib
     ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/opencv-dev/lib
