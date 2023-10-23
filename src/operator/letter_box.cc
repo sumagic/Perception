@@ -54,7 +54,6 @@ void LetterBox::Restore(std::vector<PredBox>& predboxes)
         x1 = std::max(std::min(x1, (float)(m_srcWidth - 1)), 0.f);
         y1 = std::max(std::min(y1, (float)(m_srcHeight - 1)), 0.f);
 
-
         predbox.box.x = x0;
         predbox.box.y = y0;
         predbox.box.width = x1 - x0;

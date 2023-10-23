@@ -31,7 +31,6 @@ int main(int argc, char **argv)
     for (auto &src_image : src_image_list) {
         LOG_INFO("start to process image: %s", src_image.c_str());
 
-        
     }
     return 0;
 }
