@@ -21,6 +21,7 @@ add_library(PerceptionCore SHARED
     operator/sub_mean_scale.cc
     operator/letter_box.cc
     operator/yolov5_decoder.cc
+    operator/predbox_nms.cc
     utils/file.cc
     ai_engine/ncnn.cc
     ai_engine/ecarx_engine.cc
