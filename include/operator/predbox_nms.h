@@ -17,10 +17,11 @@ public:
     ~PredBoxNMS() {}
 
     Status Init(const YAML::Node& config);
-    Status Run(std::vector<PredBox>& ins,
+    Status Run(const std::vector<PredBox>& ins,
         std::vector<PredBox>& outs);
 
 private:
+    float m_maxIoU;
 }; // class ResizeBorder
 
 } // namespace perception

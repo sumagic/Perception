@@ -15,6 +15,8 @@ struct Box {
     Box(const Box& box): cx(box.cx), cy(box.cy), width(box.width), height(box.height) {}
 }; // namespace Box
 
+float BoxIoU(const Box& box1, const Box& box2);
+
 struct PredBox {
     float score;
     size_t id;
@@ -23,6 +25,8 @@ struct PredBox {
     PredBox(): score(0.0f), id(0), box(0, 0, 0, 0) {}
     PredBox(const Box& ibox, const float iscore, const size_t iid): box(ibox), score(iscore), id(iid) {}
 }; // struct PredBox
+
+float PredBoxIoU(const PredBox& predbox1, const PredBox& predbox2);
 
 } // namespace perception
 #endif // __PERCEPTION_BOX_H__

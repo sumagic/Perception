@@ -23,6 +23,7 @@ add_library(PerceptionCore SHARED
     operator/yolov5_decoder.cc
     operator/predbox_nms.cc
     utils/file.cc
+    utils/box.cc
     ai_engine/ncnn.cc
     ai_engine/ecarx_engine.cc
 )
