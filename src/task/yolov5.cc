@@ -61,7 +61,13 @@ Status Yolov5::Process(const cv::Mat& image, std::vector<PredBox>& object_infos)
         LOG_ERROR("sub mean scale failed, ret=%x", status);
     }
 
-
+    std::vector<ImageFloat> ins = {out};
+    std::vector<Tensor<float>> outs = {};
+    status = m_engine.Run<float, float>(ins, outs);
+    if (status != SUCCESS) {
+        LOG_ERROR("engine run failed, ret=%x", status);
+        return status;
+    }
     return SUCCESS;
 }
 } // namespace perception

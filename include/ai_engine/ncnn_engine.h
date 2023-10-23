@@ -30,14 +30,18 @@ public:
     }
 
     template <typename InputDType, typename OutputDType>
-    Status Run(const std::vector<Tensor<InputDType>>& ins, std::vector<Tensor<OutputDType>>& outs)
+    Status Run(std::vector<Tensor<InputDType>>& ins, std::vector<Tensor<OutputDType>>& outs)
     {
         assert(ins.size() == m_iName.size());
         assert(outs.size() == m_oName.size());
 
-        for (size_t i = 0; i < ins.size(); i++)
-            m_extractor.input(m_iName[i].c_str(), ins[i].data);
-
+        std::vector<ncnn::Mat> mats(ins.size());
+        for (size_t i = 0; i < ins.size(); i++) {
+            // DHWC
+            auto& dims = ins[i].dimensions();
+            ncnn::Mat mat(dims[2], dims[1], dims[0], dims[3], ins[i].data(), sizeof(InputDType));
+            m_extractor.input(m_iName[i].c_str(), mats[i]);
+        }
         
         for (size_t i = 0; i < outs.size(); i++) {
             auto& dims = outs[i].dimensions(); // DCHW
