@@ -46,6 +46,22 @@ Status Yolov5::Init(const YAML::Node& config)
 
 Status Yolov5::Process(const cv::Mat& image, std::vector<PredBox>& object_infos)
 {
+    auto mapped = Eigen::TensorMap<Image>(image.data, image.rows, image.cols, image.channels());
+    Image eimage = Eigen::TensorMap<Image>(mapped);
+
+    ImageFloat out;
+    Status status = m_letterBox.Run(eimage, out);
+    if (status != SUCCESS) {
+        LOG_ERROR("letter box failed, ret=%x", status);
+        return status;
+    }
+
+    status = m_subMeanScale.Run(out);
+    if (status != SUCCESS) {
+        LOG_ERROR("sub mean scale failed, ret=%x", status);
+    }
+
+
     return SUCCESS;
 }
 } // namespace perception

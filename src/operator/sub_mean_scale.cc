@@ -7,24 +7,19 @@
 namespace perception {
 Status SubMeanScale::Init(const YAML::Node& config)
 {
-    m_mean = config["mean"].as<std::vector<std::vector<float>>>();
-    m_scale = config["scale"].as<std::vector<std::vector<float>>>();
+    m_mean = config["mean"].as<std::vector<float>>();
+    m_scale = config["scale"].as<std::vector<float>>();
     return SUCCESS;
 }
 
-Status SubMeanScale::Run(std::vector<Tensor<float>>& ins,
-                         std::vector<Tensor<float>>& outs)
+Status SubMeanScale::Run(ImageFloat& image)
 {
-    assert(ins.size() == outs.size());
-    for (size_t i = 0; i < outs.size(); i++) {
-    
     #ifdef USE_NCNN
-        auto& dims = outs[i].dimensions(); // DCHW
-        ncnn::Mat tmp = ncnn::Mat(dims[3], dims[2], dims[0], dims[1], ins[i].data(), sizeof(float));
-        tmp.substract_mean_normalize(m_mean[i].data(), m_scale[i].data());
+        auto& dims = image.dimensions(); // HWC
+        ncnn::Mat tmp = ncnn::Mat(dims[1], dims[0], dims[2], image.data(), sizeof(float));
+        tmp.substract_mean_normalize(m_mean.data(), m_scale.data());
     #endif
 
-    }
     return SUCCESS;
 }
 } // namespace perception

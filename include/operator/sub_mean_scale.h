@@ -15,12 +15,11 @@ SubMeanScale() {}
 ~SubMeanScale() {}
 
 Status Init(const YAML::Node& node);
-Status Run(std::vector<Tensor<float>>& ins,
-    std::vector<Tensor<float>>& outs);
+Status Run(ImageFloat& image);
 
 private:
-    std::vector<std::vector<float>> m_mean;
-    std::vector<std::vector<float>> m_scale;
+    std::vector<float> m_mean;
+    std::vector<float> m_scale;
 }; // class SubMeanScale
 
 } // namespace 
