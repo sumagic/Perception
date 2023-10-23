@@ -6,7 +6,7 @@ set(project_name "Perception")
 project(${project_name})
 
 set(COMPILE_PLATFORM "aarch64")
-set(COMPILE_PLATFORM "x86")
+# set(COMPILE_PLATFORM "x86")
 
 set(CMAKE_SYSTEM_NAME Linux)
 
