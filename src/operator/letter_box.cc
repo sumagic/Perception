@@ -35,7 +35,11 @@ Status LetterBox::Run(const Image& in, Image& out)
 
 void LetterBox::Restore(std::vector<PredBox>& predboxes)
 {
-
+    float x1, y1, x2, y2;
+    for (auto& predbox : predboxes)
+    {
+      
+    }
 }
 
 } // namespace perception

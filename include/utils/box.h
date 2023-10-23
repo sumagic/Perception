@@ -3,17 +3,13 @@
 
 #include "common.h"
 
+#ifdef USE_OPENCV
+    #include <opencv2/opencv.hpp>
+#endif // USE_OPENCV
+
 namespace perception {
 
-struct Box {
-    size_t cx;
-    size_t cy;
-    size_t width;
-    size_t height;
-
-    Box(const size_t icx, const size_t icy, const size_t iwidth, const size_t iheight): cx(icx), cy(icy), width(iwidth), height(iheight) {}
-    Box(const Box& box): cx(box.cx), cy(box.cy), width(box.width), height(box.height) {}
-}; // namespace Box
+using Box = cv::Rect;
 
 float BoxIoU(const Box& box1, const Box& box2);
 

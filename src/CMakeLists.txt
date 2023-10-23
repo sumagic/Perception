@@ -1,6 +1,7 @@
 message(STATUS "################project ${project_name} core #####################")
 
 add_definitions(-DUSE_NCNN)
+add_definitions(-DUSE_OPENCV)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
@@ -15,6 +16,7 @@ link_directories(${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/yaml-cpp-dev/lib
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/ncnn/include
+    ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/opencv-dev/include/opencv4
 )
 
 add_library(PerceptionCore SHARED
