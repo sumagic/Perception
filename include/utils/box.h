@@ -20,6 +20,8 @@ struct PredBox {
 
     PredBox(): score(0.0f), id(0), box(0, 0, 0, 0) {}
     PredBox(const Box& ibox, const float iscore, const size_t iid): box(ibox), score(iscore), id(iid) {}
+
+    Status Draw(cv::Mat& image, const std::vector<std::string>& class_names) const;
 }; // struct PredBox
 
 float PredBoxIoU(const PredBox& predbox1, const PredBox& predbox2);
