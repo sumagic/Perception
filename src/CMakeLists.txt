@@ -11,14 +11,7 @@ include_directories(
 )
 
 link_directories(${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/yaml-cpp-dev/lib
-    ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/ncnn/lib
 )
-
-if(${COMPILE_PLATFORM} STREQUAL "x86")
-    link_directories(${ECARX_ENGINE_PATH}/lib/linux_x86)
-else()
-    link_directories(${ECARX_ENGINE_PATH}/lib/linux_arm)
-endif()
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/ncnn/include
@@ -33,10 +26,22 @@ add_library(PerceptionCore SHARED
     ai_engine/ecarx_engine.cc
 )
 
-target_compile_definitions(PerceptionCore PUBLIC USE_NCNN_SIMPLEOCV)
+if(${COMPILE_PLATFORM} STREQUAL "x86")
+    target_link_directories(PerceptionCore 
+        PUBLIC ${ECARX_ENGINE_PATH}/lib/linux_x86
+    )
+else()
+    target_link_directories(PerceptionCore
+        PUBLIC ${ECARX_ENGINE_PATH}/lib/linux_arm
+    )
+endif()
 
-target_link_libraries(PerceptionCore PRIVATE
+target_link_directories(PerceptionCore
+    PUBLIC ${CMAKE_SOURCE_DIR}/lib/${COMPILE_PLATFORM}/ncnn/lib
+)
+
+target_link_libraries(PerceptionCore
     yaml-cpp
-    ncnn
     ecarx_engine
+    ncnn
 )
