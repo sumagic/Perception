@@ -46,7 +46,7 @@ Status Yolov5::Init(const YAML::Node& config)
 
 Status Yolov5::Process(const cv::Mat& image, std::vector<PredBox>& object_infos)
 {
-    auto mapped = Eigen::TensorMap<Image>(image.data, image.rows, image.cols, image.channels());
+    auto mapped = Eigen::TensorMap<Image>(image.data, 1, image.rows, image.cols, image.channels());
     Image eimage = Eigen::TensorMap<Image>(mapped);
 
     ImageFloat out;

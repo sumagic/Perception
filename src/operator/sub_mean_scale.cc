@@ -15,8 +15,8 @@ Status SubMeanScale::Init(const YAML::Node& config)
 Status SubMeanScale::Run(ImageFloat& image)
 {
     #ifdef USE_NCNN
-        auto& dims = image.dimensions(); // HWC
-        ncnn::Mat tmp = ncnn::Mat(dims[1], dims[0], dims[2], image.data(), sizeof(float));
+        auto& dims = image.dimensions(); // DHWC
+        ncnn::Mat tmp = ncnn::Mat(dims[2], dims[1], dims[3], image.data(), sizeof(float));
         tmp.substract_mean_normalize(m_mean.data(), m_scale.data());
     #endif
 

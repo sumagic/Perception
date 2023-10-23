@@ -23,18 +23,18 @@ Status LetterBox::Run(const Image& in, ImageFloat& out)
     m_srcWidth = idims[1];
     m_srcHeight = idims[0];
 
-    float hscale = (float)odims[0] / idims[0]; // targetH / inputH
-    float wscale = (float)odims[1] / idims[1]; // targetW / inputW
+    float hscale = (float)odims[1] / idims[1]; // targetH / inputH
+    float wscale = (float)odims[2] / idims[2]; // targetW / inputW
     m_scale = hscale > wscale ? wscale : hscale;
-    size_t rh = (size_t)(idims[0] * m_scale);
-    size_t rw = (size_t)(idims[1] * m_scale);
+    size_t rh = (size_t)(idims[1] * m_scale);
+    size_t rw = (size_t)(idims[2] * m_scale);
 
     #ifdef USE_NCNN
         // 这里resize之后，tmp已经是fp32的数据
-        ncnn::Mat tmp = ncnn::Mat::from_pixels_resize((const unsigned char*)in.data(), ncnn::Mat::PIXEL_BGR2RGB, idims[1], idims[0], rw, rh);
-        ncnn::Mat in_pad(odims[1], odims[0], odims[2], out.data(), sizeof(float));
-        m_hPad = odims[0] - idims[0];
-        m_wPad = odims[1] - idims[1];
+        ncnn::Mat tmp = ncnn::Mat::from_pixels_resize((const unsigned char*)in.data(), ncnn::Mat::PIXEL_BGR2RGB, idims[2], idims[1], rw, rh);
+        ncnn::Mat in_pad(odims[2], odims[1], odims[3], out.data(), sizeof(float));
+        m_hPad = odims[1] - idims[1];
+        m_wPad = odims[2] - idims[2];
         // pad
         ncnn::copy_make_border(tmp, in_pad, m_hPad / 2, m_hPad - m_hPad / 2, m_wPad / 2, m_wPad - m_wPad / 2, ncnn::BORDER_CONSTANT, m_padValue);
     #endif // USE_NCNN

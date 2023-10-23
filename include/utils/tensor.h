@@ -10,11 +10,10 @@ namespace perception
 template <typename T>
 using Tensor = Eigen::Tensor<float, 4, Eigen::RowMajor>;
 
-// hwc
-using Image = Eigen::Tensor<uint8_t, 3, Eigen::RowMajor>;
+// nhwc
+using Image = Eigen::Tensor<uint8_t, 4, Eigen::RowMajor>;
 
-// hwc
-using ImageFloat = Eigen::Tensor<float, 3, Eigen::RowMajor>;
+using ImageFloat = Eigen::Tensor<float, 4, Eigen::RowMajor>;
 } // namespace perception
 
 #endif // __PERCEPTION_TENSOR_H__
