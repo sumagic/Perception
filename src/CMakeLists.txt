@@ -26,8 +26,9 @@ add_library(PerceptionCore SHARED
     operator/predbox_nms.cc
     utils/file.cc
     utils/box.cc
-    ai_engine/ncnn.cc
+    ai_engine/ncnn_engine.cc
     ai_engine/ecarx_engine.cc
+    task/yolov5.cc
 )
 
 if(${COMPILE_PLATFORM} STREQUAL "x86")

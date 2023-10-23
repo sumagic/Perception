@@ -13,7 +13,6 @@
 namespace perception
 {
 
-template <typename InputDType, typename OutputDType>
 class NCNNEngine
 {
 public:
@@ -29,6 +28,8 @@ public:
         m_extractor = m_net.create_extractor();
         return SUCCESS;
     }
+
+    template <typename InputDType, typename OutputDType>
     Status Run(const std::vector<Tensor<InputDType>>& ins, std::vector<Tensor<OutputDType>>& outs)
     {
         assert(ins.size() == m_iName.size());
