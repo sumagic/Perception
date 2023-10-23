@@ -15,6 +15,7 @@
 #endif // USE_OPENCV
 
 #include <vector>
+#include <string>
 
 namespace perception
 {

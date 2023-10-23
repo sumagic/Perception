@@ -19,17 +19,16 @@ public:
     ~LetterBox() {}
 
     Status Init(const YAML::Node& config);
-    Status Run(const Image& in, Image& out);
+    Status Run(const Image& in, ImageFloat& out);
     void Restore(std::vector<PredBox>& prebox);
 
 private:
-    size_t m_targetWidth;
-    size_t m_targetHeight;
     float m_scale;
     size_t m_hPad;
     size_t m_wPad;
     size_t m_srcWidth;
     size_t m_srcHeight;
+    float m_padValue;
 }; // class ResizeBorder
 
 } // namespace perception

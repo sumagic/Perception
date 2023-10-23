@@ -11,10 +11,11 @@ namespace perception
 
 Status LetterBox::Init(const YAML::Node& config)
 {
+    m_padValue = config["pad_value"].as<float>();
     return SUCCESS;
 }
 
-Status LetterBox::Run(const Image& in, Image& out)
+Status LetterBox::Run(const Image& in, ImageFloat& out)
 {
     auto& idims = in.dimensions(); // DHWC, input images
     auto& odims = out.dimensions(); // DHWC, output images
@@ -29,11 +30,13 @@ Status LetterBox::Run(const Image& in, Image& out)
     size_t rw = (size_t)(idims[1] * m_scale);
 
     #ifdef USE_NCNN
+        // 这里resize之后，tmp已经是fp32的数据
         ncnn::Mat tmp = ncnn::Mat::from_pixels_resize((const unsigned char*)in.data(), ncnn::Mat::PIXEL_BGR2RGB, idims[1], idims[0], rw, rh);
-        ncnn::Mat in_pad(odims[1], odims[0], odims[2], sizeof(float));
+        ncnn::Mat in_pad(odims[1], odims[0], odims[2], out.data(), sizeof(float));
         m_hPad = odims[0] - idims[0];
         m_wPad = odims[1] - idims[1];
-        ncnn::copy_make_border(tmp, in_pad, m_hPad / 2, m_hPad - m_hPad / 2, m_wPad / 2, m_wPad - m_wPad / 2, ncnn::BORDER_CONSTANT, 114.f);
+        // pad
+        ncnn::copy_make_border(tmp, in_pad, m_hPad / 2, m_hPad - m_hPad / 2, m_wPad / 2, m_wPad - m_wPad / 2, ncnn::BORDER_CONSTANT, m_padValue);
     #endif // USE_NCNN
 
     return SUCCESS;

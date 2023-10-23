@@ -16,7 +16,7 @@ namespace perception
 class NCNNEngine
 {
 public:
-    NCNNEngine() {}
+    NCNNEngine(): m_extractor(m_net.create_extractor()) {}
     ~NCNNEngine() {}
 
     Status Init(const YAML::Node& config)
